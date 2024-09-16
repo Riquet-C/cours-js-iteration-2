@@ -176,12 +176,14 @@ function filter_objects_by_comm(comm) {
  * du même type que celui passé en paramètre.
  */
 function filter_objects_by_data_type(data_type) {
-    let typeObject = Object.keys(data.data_formats).find(type => data.data_formats[type]["data_type"] === data_type)? Object.keys(data.data_formats).filter(type => data.data_formats[type]["data_type"] === data_type) : undefined;
-    // if (typeObject === undefined) {
-    //     return undefined;
-    // }
-    return data.objects.find(object => typeObject.includes(object.type))
-}
+    let typeObject = Object.keys(data.data_formats).filter(key => data.data_formats[key]["data_type"] === data_type)
+    console.log(typeObject);
+    for (let i= 0; i < typeObject.length; i ++){
+        var sensorsObject = {"object" : Object.keys(data.types).filter(object => data.types[object].sensors.includes(typeObject[i]))}
+        return sensorsObject;
+    }
+    return data.objects.filter(object => object.type === sensorsObject)
+    }
 
 /**
  * Cette fonction est exécutée lorsqu'on demande l'adresse

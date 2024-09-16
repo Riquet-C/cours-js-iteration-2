@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "js campus module 2",
   "scripts": {
-    "start": "node app.js 5050",
+    "start": "node app.js 5000",
     "test": "mocha -u tdd --exit -b "
   },
   "dependencies": {
